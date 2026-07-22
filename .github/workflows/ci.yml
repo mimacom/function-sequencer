@@ -16,9 +16,12 @@ on:
         required: false
 
 env:
-  # Common versions
-  GO_VERSION: '1.26.4'
-  GOLANGCI_VERSION: 'v2.12.2'
+  # Common versions — keep upstream's toolchain for this release branch. The
+  # v0.6.x code was written for golangci-lint v2.4.0; the mima adaptation must
+  # not bump it (v2.12.2 enforces goconst on fn_test.go, which upstream's own
+  # linter never flagged, breaking lint).
+  GO_VERSION: '1.25.11'
+  GOLANGCI_VERSION: 'v2.4.0'
   DOCKER_BUILDX_VERSION: 'v0.24.0'
 
   # The package to push, without a version tag. The default matches GitHub. For
